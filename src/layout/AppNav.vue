@@ -11,7 +11,7 @@
 			</li>
 			<li>
 				<router-link :to="{ name: 'edit' }" active-class="active">
-					222로 이동
+					API 테스트로 이동
 				</router-link>
 			</li>
 		</ul>
