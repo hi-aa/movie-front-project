@@ -3,6 +3,9 @@ import { api } from '.';
 export async function callBackendTest() {
 	return await api.get('/api/users');
 }
+export async function callBackendDBTest() {
+	return await api.get('/api/users/mongo');
+}
 
 // export async function fetchMovieDailyList(params) {
 // 	return await api.get(

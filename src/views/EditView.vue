@@ -1,7 +1,10 @@
 <template>
   <div>
     second view
-    <button @click="test">Click me</button>
+    <br/>
+    <button @click="test">Call Not DB API</button>
+    <br/>
+    <button @click="test2">Call DB API</button>
     <h2>Response Message</h2>
     <span>
       {{ message }}
@@ -14,7 +17,7 @@
 </template>
 
 <script setup>
-import { callBackendTest } from '@/api/movie';
+import { callBackendTest, callBackendDBTest } from '@/api/movie';
 import { ref } from 'vue';
 
 const message  = ref('');
@@ -25,6 +28,11 @@ const test = async () => {
     message.value = response.data.message;
     testArray.value = response.data.data;
 }; 
+const test2 = async ()=> {
+	const response = await callBackendDBTest();
+  message.value = response.data.message;
+  testArray.value = response.data.data;
+};
 </script>
 
 <style scoped>
