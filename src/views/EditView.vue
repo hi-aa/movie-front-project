@@ -1,18 +1,13 @@
 <template>
   <div>
-    second view
-    <br/>
-    <button @click="test">Call Not DB API</button>
-    <br/>
+    <button @click="test">Call Not DB API</button>&nbsp;
     <button @click="test2">Call DB API</button>
-    <h2>Response Message</h2>
-    <span>
-      {{ message }}
-    </span>
-    <h2>Response Data</h2>
-    <ul>
-      <li v-for="(item, index) in testArray" :key="index">{{ item }}</li>
-    </ul>
+    <div style="border:3px solid black; margin: 10px;">
+      <h2>Response</h2>
+      <ul>
+        <li v-for="(item, index) in arr" :key="index">{{ item }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -20,18 +15,15 @@
 import { callBackendTest, callBackendDBTest } from '@/api/movie';
 import { ref } from 'vue';
 
-const message  = ref('');
-const testArray = ref([]);
+const arr = ref([]);
 
 const test = async () => {
 		const response = await callBackendTest();
-    message.value = response.data.message;
-    testArray.value = response.data.data;
+    arr.value = response.data;
 }; 
 const test2 = async ()=> {
 	const response = await callBackendDBTest();
-  message.value = response.data.message;
-  testArray.value = response.data.data;
+  arr.value = response.data;
 };
 </script>
 
